@@ -9,7 +9,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
@@ -20,14 +20,10 @@ public class DriveTrainSub extends SubsystemBase {
    */
 
    // The motors on the left side of the drive.
-  private final SpeedControllerGroup leftMotors =
-  new SpeedControllerGroup(new PWMVictorSPX(DriveConstants.kLeftMotor1Port),
-                           new PWMVictorSPX(DriveConstants.kLeftMotor2Port));
+  private final SpeedController leftMotors = new PWMVictorSPX(DriveConstants.kLeftMotorPort);
 
   // The motors on the right side of the drive.
-  private final SpeedControllerGroup rightMotors =
-  new SpeedControllerGroup(new PWMVictorSPX(DriveConstants.kRightMotor1Port),
-                           new PWMVictorSPX(DriveConstants.kRightMotor2Port));
+  private final SpeedController rightMotors = new PWMVictorSPX(DriveConstants.kRightMotorPort);
 
   // The robot's drive
   private final DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
@@ -39,7 +35,7 @@ public class DriveTrainSub extends SubsystemBase {
 
   // The right-side drive encoder
   private final Encoder rightEncoder =
-  new Encoder(DriveConstants.kRightEncoderPorts[2], DriveConstants.kRightEncoderPorts[3],
+  new Encoder(DriveConstants.kRightEncoderPorts[0], DriveConstants.kRightEncoderPorts[1],
               DriveConstants.kRightEncoderReversed);
 
   public DriveTrainSub() {
@@ -47,8 +43,8 @@ public class DriveTrainSub extends SubsystemBase {
     rightEncoder.setDistancePerPulse(DriveConstants.kEncoderDistancePerPulse);
   }
 
-  public void arcadeDrive(double fw, double ro) {
-    drive.arcadeDrive(fw, ro);
+  public void tankDrive(double rightMotors, double leftMotors) {
+    drive.tankDrive(1, 1);
     drive.setSafetyEnabled(false);
   }
 
