@@ -19,34 +19,23 @@ package frc.robot;
  */
 public final class Constants {
     public static final class DriveConstants {
-        public static final int kLeftMotor1Port = 0;
-        public static final int kLeftMotor2Port = 1;
-        public static final int kRightMotor1Port = 2;
-        public static final int kRightMotor2Port = 3;
-        public static final boolean kLeftMotor1Inverted = true;
-        public static final boolean kLeftMotor2Inverted = true;
-
-        public static final int[] kLeftEncoderPorts = new int[] {0, 1};
-        public static final int[] kRightEncoderPorts = new int[] {2, 3};
-        public static final boolean kLeftEncoderReversed = false;
-        public static final boolean kRightEncoderReversed = true;
-
-        public static final int kEncoderCPR = 1024;
-        public static final double kWheelDiameterInches = 6;
-        public static final double kEncoderDistancePerPulse = (kWheelDiameterInches * Math.PI) / (double) kEncoderCPR;
-        // Assumes the encoders are directly mounted on the wheel shafts        
+        public static final int kLeftMotorPort = 0;
+        public static final int kRightMotorPort = 1;
+        public static final boolean kLeftMotorInverted = true;       
     }
 
     public static final class ShootConstants {
         public static final int kShootMotor1Port = 4;
-        public static final double kShootMotorSpeed = 1;
-        public static final double kShootMotorClearSpeed = -.25;
+        public static final double kShootMotorSpeed = -1;
+        public static final double kShootMotorClearSpeed = 1;
+        public static final double kShuffleMotorSpeed = 1;
+        public static final int kShuffleMotorPort = 2;
     }
 
     public static final class SpinConstants {
         public static final int kSpinMotor1Port = 5;
-        public static final double kSpinMotorRightSpeed = .25;
-        public static final double kSpinMotorLeftSpeed = -.25;
+        public static final double kSpinMotorRightSpeed = 1;
+        public static final double kSpinMotorLeftSpeed = -1;
     }
 
     public static final class LiftConstants {

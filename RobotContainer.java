@@ -7,19 +7,12 @@
 
 package frc.robot;
 
-//import java.util.function.DoubleSupplier;
-
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.XboxController.Button;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.AutoShootCom;
-import frc.robot.commands.AutoSimpleCom;
 import frc.robot.commands.ClearShooterCom;
-import frc.robot.commands.DriveCom;
 import frc.robot.commands.LiftCom;
 import frc.robot.commands.LowerCom;
 import frc.robot.commands.ShootCom;
@@ -43,19 +36,7 @@ public class RobotContainer {
   private final DriveTrainSub driveTrainSub = new DriveTrainSub();
   private final LiftSub liftSub = new LiftSub();
   private final ShootSub shootSub = new ShootSub();
-  private final SpinSub spinSub = new SpinSub();
-  
-  private final AutoSimpleCom autoSimpleCom = new AutoSimpleCom(driveTrainSub);
-  private final AutoShootCom autoShootCom = new AutoShootCom(driveTrainSub, shootSub);
-  //private final DriveCom driveCom = new DriveCom(driveTrainSub, null, null);
-  //private final LiftCom liftCom = new LiftCom(liftSub);
-  //private final LowerCom lowerCom = new LowerCom(liftSub);
-  //private final SpinLeft spinLeft = new SpinLeft(spinSub);
-  //private final SpinRight spinRight = new SpinRight(spinSub);
-  //private final ShootCom shootCom = new ShootCom(shootSub);
-  //private final ClearShooterCom clearShooterCom = new ClearShooterCom(shootSub);
-
-
+  private final SpinSub spinSub = new SpinSub();  
 
   SendableChooser<Command> chooser = new SendableChooser<>();
 
@@ -66,13 +47,10 @@ public class RobotContainer {
    * The container for the robot.  Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    // Configure the button bindings
+
     configureButtonBindings();
 
-    new DriveCom(driveTrainSub, () ->joystick.getY(Hand.kLeft), () ->joystick.getX(Hand.kRight));
-
-      chooser.addOption("Auto Shoot", autoShootCom);
-      chooser.addOption("Simple Auto", autoSimpleCom);
+    driveTrainSub.tankDrive(joystick.getRawAxis(1), joystick.getRawAxis(3));
   }
 
   /**
@@ -82,12 +60,12 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(joystick, Button.kA.value).whenHeld(new ShootCom(shootSub));
-    new JoystickButton(joystick, Button.kB.value).whenHeld(new ClearShooterCom(shootSub));
-    new JoystickButton(joystick, Button.kBumperRight.value).whenHeld(new LiftCom(liftSub));
-    new JoystickButton(joystick, Button.kBumperLeft.value).whileHeld(new LowerCom(liftSub));
-    new JoystickButton(joystick, Button.kX.value).whenHeld(new SpinLeft(spinSub));
-    new JoystickButton(joystick, Button.kY.value).whenHeld(new SpinRight(spinSub));
+    new JoystickButton(joystick, 7).whileHeld(new ShootCom(shootSub));
+    new JoystickButton(joystick, 8).whileHeld(new ClearShooterCom(shootSub));
+    new JoystickButton(joystick, 6).whileHeld(new LiftCom(liftSub));
+    new JoystickButton(joystick, 5).whileHeld(new LowerCom(liftSub));
+    new JoystickButton(joystick, 1).whileHeld(new SpinLeft(spinSub));
+    new JoystickButton(joystick, 3).whileHeld(new SpinRight(spinSub));
 
   }
 

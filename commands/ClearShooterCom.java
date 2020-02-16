@@ -14,7 +14,7 @@ public class ClearShooterCom extends CommandBase {
   private final ShootSub shootSub;
   /**
    * Creates a new ClearShooterCom.
- * @param shootSub
+ * @param shoot
    */
   public ClearShooterCom(ShootSub subsystem) {
     shootSub = subsystem;

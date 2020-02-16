@@ -12,25 +12,21 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ShootConstants;
 
-public class ShootSub extends SubsystemBase {
-  private final SpeedController shootMotor = new PWMVictorSPX(ShootConstants.kShootMotor1Port);
-
-  public void Shoot() {
-    shootMotor.set(ShootConstants.kShootMotorSpeed);
-  }
-
-  public void Clear() {
-    shootMotor.set(ShootConstants.kShootMotorClearSpeed);
-  }
-
-  public void Stop() {
-    shootMotor.set(0);
-  }
-
+public class ShuffleSub extends SubsystemBase {
+  private final SpeedController shuffleMotor = new PWMVictorSPX(ShootConstants.kShuffleMotorPort);
   /**
-   * Creates a new ShootSub.
+   * Creates a new ShuffleSub.
    */
-  public ShootSub() {
+
+  public void Shuffle() {
+    shuffleMotor.set(ShootConstants.kShuffleMotorSpeed);
+  }
+
+  public void stop() {
+    shuffleMotor.set(0);
+  }
+
+  public ShuffleSub() {
 
   }
 

@@ -8,22 +8,16 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.DriveTrainSub;
 
-public class DriveCom extends CommandBase {
-  private final DriveTrainSub driveTrainSub;
+public class ShuffleCom extends CommandBase {
   /**
-   * Creates a new DriveCom.
- * @param driveTrainSub
+   * Creates a new ShuffleCom.
    */
-  public DriveCom(DriveTrainSub drive) {
-    driveTrainSub = drive;
-    addRequirements(drive);
-    
+  public ShuffleCom() {
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
-// Called when the command is initially scheduled.
+  // Called when the command is initially scheduled.
   @Override
   public void initialize() {
   }
@@ -31,7 +25,6 @@ public class DriveCom extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    driveTrainSub.tankDrive(0, 0);
   }
 
   // Called once the command ends or is interrupted.
