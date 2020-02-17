@@ -15,24 +15,15 @@ import frc.robot.Constants.DriveConstants;
 
 
 public class DriveTrainSub extends SubsystemBase {
-  /**
-   * Creates a new DriveTrainSub.
-   */
-
-   // The motors on the left side of the drive.
   private final SpeedControllerGroup leftMotors = new SpeedControllerGroup(new PWMVictorSPX(DriveConstants.kLeftMotor1Port), new PWMVictorSPX(DriveConstants.kLeftMotor2Port));
-
-  // The motors on the right side of the drive.
   private final SpeedControllerGroup rightMotors = new SpeedControllerGroup(new PWMVictorSPX(DriveConstants.kRightMotor1Port), new PWMVictorSPX(DriveConstants.kRightMotor2Port));
-
-  // The robot's drive
   private final DifferentialDrive drive = new DifferentialDrive(leftMotors, rightMotors);
 
   public DriveTrainSub() {
     drive.setSafetyEnabled(false);
   }
  
-  public void tankDrive(double leftMotors, double rightMotors) {
+  public void drive(double leftMotors, double rightMotors) {
     drive.tankDrive(leftMotors, rightMotors);
   }
 

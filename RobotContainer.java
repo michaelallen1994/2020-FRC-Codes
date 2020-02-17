@@ -51,9 +51,7 @@ public class RobotContainer {
 
     configureButtonBindings();
 
-    driveTrainSub.setDefaultCommand(new DriveCom(driveTrainSub));
-
-    driveTrainSub.tankDrive(joystick.getRawAxis(1), joystick.getRawAxis(3));
+    driveTrainSub.setDefaultCommand(new DriveCom(() -> joystick.getRawAxis(1), () -> joystick.getRawAxis(3), driveTrainSub));
   }
 
   /**

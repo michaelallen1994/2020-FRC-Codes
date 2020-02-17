@@ -8,35 +8,35 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ShuffleSub;
+import frc.robot.subsystems.TriggerSub;
 
-public class ShuffleCom extends CommandBase {
-  private final ShuffleSub shuffleSub;
+public class TriggerCom extends CommandBase {
+  private final TriggerSub triggerSub;
   /**
-   * Creates a new ShuffleCom.
+   * Creates a new TriggerCom.
    */
-  public ShuffleCom(ShuffleSub subsystem) {
-    shuffleSub = subsystem;
-    addRequirements(shuffleSub);
+  public TriggerCom(TriggerSub subsystem) {
+    triggerSub = subsystem;
+    addRequirements(triggerSub);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    shuffleSub.Shuffle();
+    triggerSub.Release();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shuffleSub.Shuffle();
+    triggerSub.Release();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    shuffleSub.stop();
+    triggerSub.Stop();
   }
 
   // Returns true when the command should end.

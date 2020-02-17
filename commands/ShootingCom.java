@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.ShootSub;
 import frc.robot.subsystems.ShuffleSub;
+import frc.robot.subsystems.TriggerSub;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -18,10 +19,14 @@ public class ShootingCom extends SequentialCommandGroup {
   /**
    * Creates a new ShootingCom.
    */
-  public ShootingCom(ShootSub shootSub, ShuffleSub shuffleSub) {
+  public ShootingCom(ShootSub shootSub, ShuffleSub shuffleSub, TriggerSub triggerSub) {
     // Add your commands in the super() call, e.g.
     // super(new FooCommand(), new BarCommand());
     super();
+      new ShootCom(shootSub);
+      new ShuffleCom(shuffleSub);
+      new TriggerCom(triggerSub);
+
     //new ShootCom(shoot);
     //new ShuffleCom(shuffleSub);
 
